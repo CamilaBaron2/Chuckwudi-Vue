@@ -1,0 +1,21 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables.scss';
+@import 'node_modules/bootstrap/scss/mixins';
+
+$theme-colors: (
+  "primary":    #fc4b08,
+  "secondary":  #4CAF50 ,
+  "success":    $indigo-500,
+  "info":       $gray-100,
+  "warning":    $yellow-400,
+  "danger":     $danger,
+  "light":      $orange-100,
+  "dark":       black,
+);
+
+.mt-6 {
+  margin-top: 4rem;
+}
+
+
+@import 'node_modules/bootstrap/scss/bootstrap.scss';

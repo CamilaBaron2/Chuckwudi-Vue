@@ -1,0 +1,62 @@
+<template>
+ <div class="card">
+    <img :src="require('@/assets/images/productos/'+product.img)" class="image" alt="food">
+    <div class="time bg-info">
+        <h5>{{product.tiempo}}</h5>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title" :title="product.nombre">
+            {{product.nombre.substring(0,27)}}
+            <label v-if="product.nombre.length > 27">...</label>
+        </h5>
+        <div class="card-text d-flex justify-content-between">
+            <label><i class="fa-regular fa-star"></i> {{product.calificacion}}</label>
+            <label><i class="fa-solid fa-dollar-sign"></i> {{product.precio}}</label>
+        </div>
+    </div>
+</div>
+</template>
+
+<script>
+import {mapActions, mapState } from 'vuex';
+
+export default {
+    props:{
+        product: {
+            id: String,
+            nombre: String,
+            calificacion: Number,
+            tiempo: String,
+            precio: Number,
+            img: String
+        }
+    },
+    computed: {
+        ...mapState('general',['productoSeleccionado']),
+    },
+    methods: {
+        ...mapActions('general',['filtrarProductos']),
+        filtrarProductos(productos){
+            this.filtrarProductos(productos);
+        }
+
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.card{
+    border-radius: 10%;
+    .image{
+    border-radius: 10%;
+    height: 200px;
+    }
+    .time{
+        margin-top: -3rem; 
+        width: 35%;
+        max-height: 3rem;
+        border-top-right-radius:  10px;
+        padding: 15px;
+    }
+}
+</style>
