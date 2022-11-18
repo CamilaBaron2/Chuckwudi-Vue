@@ -3,6 +3,7 @@
     <Header/>
     <Categorias/>
     <Productos/>
+    <CarritoCompras/>
   </div>
 </template>
 
@@ -13,7 +14,8 @@ export default {
   components: {
     Header: defineAsyncComponent (() => import('../views/HeaderView.vue')),
     Categorias: defineAsyncComponent (() => import('../views/CategoriasView.vue')),
-    Productos: defineAsyncComponent (() => import('../views/ProductosView.vue'))
+    Productos: defineAsyncComponent (() => import('../views/ProductosView.vue')),
+    CarritoCompras: defineAsyncComponent (() => import ('../components/CarritoComprasComponent.vue'))
   },
   methods: {
     ...mapActions('general', ['cargarCategorias','cargarProductos'])
