@@ -5,3 +5,27 @@ export const getProductosFiltrados = (state) => {
     )
     return [...productos]
 }
+
+export const categoriaSeleccionada = ({categoriaSeleccionada}) => {
+    return categoriaSeleccionada
+}
+
+export const loadingCategorias = ({loadingCategorias}) => {
+    return loadingCategorias
+}
+
+export const loadingProductos = ({loadingProductos}) => {
+    return loadingProductos
+}
+
+export const categorias = (state) => {
+    return [...state.categorias]
+}
+
+export const productosCarrito = (state) => {
+    return [...state.productosCarrito]
+}
+export const totalCompra = (state) => {
+    return state.productosCarrito.reduce(
+        (acumulado, valorActual) => acumulado + valorActual.precio ,0)
+}

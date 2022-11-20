@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
     props: {
@@ -26,7 +26,7 @@ export default {
         }
     },
     computed: {
-        ...mapState('general',['categoriaSeleccionada']),
+        ...mapGetters('general',['categoriaSeleccionada']),
     },
     methods: {
         ...mapActions('general',['filtrarCategorias']),

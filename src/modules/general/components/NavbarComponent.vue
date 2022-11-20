@@ -8,13 +8,31 @@
           <input class="form-control bg-info" type="search" placeholder="Search" aria-label="Search">           
         </div>
       </form>
+      <button class="btn btn-white"
+        @click="onLogout">
+        <i class="fa-solid fa-2x fa-right-from-bracket"></i>
+      </button>
     </div>
   </nav>
 </template>
 
 <script>
-export default {
+import { useRouter } from 'vue-router';
+import useAuth from '@/modules/auth/composables/useAuth';
 
+
+export default {
+  setup(){
+    const router = useRouter() 
+    const {logout} = useAuth()
+
+    return{
+      onLogout:() => {
+        router.push({name: 'login'})
+        logout()
+      }
+    }
+  }
 }
 </script>
 

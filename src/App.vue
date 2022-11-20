@@ -1,6 +1,25 @@
 <template>
-  <router-view/>
+  <h1 v-if="autenStatus === 'autenticado'" >{{autenStatus}}</h1>
+  <router-view v-else />
+  
 </template>
+
+<script>
+import useAuth from './modules/auth/composables/useAuth'
+
+export default {
+  setup() {
+    const {autenStatus, checkAutenStatus} = useAuth()
+
+      checkAutenStatus()
+    return {
+      autenStatus
+    }
+  }
+}
+</script>
+
+
 
 <style>
 #app {

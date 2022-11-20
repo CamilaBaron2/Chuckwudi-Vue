@@ -15,11 +15,11 @@
 
 <script>
 import {defineAsyncComponent} from 'vue'
-import {mapState} from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
     computed: {
-        ...mapState('general',['categorias','loadingCategorias']),
+        ...mapGetters('general',['categorias','loadingCategorias']),
     },
     components: {
         Categoria: defineAsyncComponent (() => import('../components/CategoriaComponent.vue')),

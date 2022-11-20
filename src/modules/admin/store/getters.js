@@ -4,3 +4,11 @@ export const getCategorias = (state) => {
     )
     return [...categorias]
 }
+
+export const productoSeleccionado = (state) => {
+    return {...state.productoSeleccionado}
+}
+
+export const productos = (state) => {
+    return [...state.productos]
+}

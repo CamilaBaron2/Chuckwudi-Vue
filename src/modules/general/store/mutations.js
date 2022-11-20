@@ -11,3 +11,7 @@ export const setProductos = (state,productos) => {
     state.productos = [...productos]
     state.loadingProductos = false
 }
+export const agregarProductosCarrito = (state, producto) => {
+    state.productosCarrito = [...state.productosCarrito, producto]
+}
+

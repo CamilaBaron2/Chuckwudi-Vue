@@ -2,6 +2,11 @@ import chukwudiApi from "@/api/chukwudiApi";
 
 export const cargarCategorias = async ({commit}) => {
     const {data} = await chukwudiApi.get('/categorias.json')
+    if ( !data ){
+        commit('setCategorias', [] )
+        return
+    }
+
     const categorias = [];
     for(let id of Object.keys(data)){
         categorias.push({
@@ -18,6 +23,10 @@ export const filtrarCategorias = ({commit}, itemSeleccionado) => {
 
 export const cargarProductos = async ({commit}) => {
     const {data} = await chukwudiApi.get('/productos.json')
+    if ( !data ){
+        commit('setProductos', [] )
+        return
+    }
     const productos = [];
     for(let id of Object.keys(data)){
         productos.push({
@@ -27,4 +36,10 @@ export const cargarProductos = async ({commit}) => {
     }
     commit('setProductos', productos)
 }
+
+export const agregarProductosCarrito = ({commit}, productos) => {
+    const productoNuevo = {...productos, cantidad: 1}
+    commit('agregarProductosCarrito',productoNuevo)
+}
+
 

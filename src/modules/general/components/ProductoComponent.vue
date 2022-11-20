@@ -1,6 +1,7 @@
 <template>
  <div class="card">
-    <img :src="require('@/assets/images/productos/'+product.img)" class="image" alt="food">
+    <img v-if="product.img" :src="product.img" class="image" alt="food">
+    <img v-else src="@/assets/images/productos/pexels-photo-376464.jpeg" class="image" alt="food">
     <div class="time bg-info">
         <h5>{{product.tiempo}}</h5>
     </div>
@@ -10,15 +11,16 @@
             <label v-if="product.nombre.length > 27">...</label>
         </h5>
         <div class="card-text d-flex justify-content-between">
-            <label><i class="fa-regular fa-star"></i> {{product.calificacion}}</label>
+            <label><i class="fa-regular fa-star"></i> 4,5</label>
             <label><i class="fa-solid fa-dollar-sign"></i> {{product.precio}}</label>
+            <button @click="addProductoCompra()" class="btn btn-warning"><i class="fa fa-plus"></i></button>
         </div>
     </div>
 </div>
 </template>
 
 <script>
-import {mapActions, mapState } from 'vuex';
+import {mapActions} from 'vuex';
 
 export default {
     props:{
@@ -31,15 +33,14 @@ export default {
             img: String
         }
     },
-    computed: {
-        ...mapState('general',['productoSeleccionado']),
-    },
     methods: {
-        ...mapActions('general',['filtrarProductos']),
+        ...mapActions('general',['filtrarProductos','agregarProductosCarrito']),
         filtrarProductos(productos){
             this.filtrarProductos(productos);
+        },
+        addProductoCompra(){
+            this.agregarProductosCarrito(this.product);
         }
-
     }
 }
 </script>
