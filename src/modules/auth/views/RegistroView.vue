@@ -9,14 +9,6 @@
                 <input v-model="userForm.nombre" class="input100" type="text" placeholder="Nombre" required>
                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
             </div>
-            <div class="wrap-input100 validate-input" data-validate = "Apellido">
-                <input v-model="userForm.apellido" class="input100" type="text" placeholder="Apellido" required>
-                <span class="focus-input100" data-placeholder="&#xe82a;"></span>
-            </div>
-            <div class="wrap-input100 validate-input" data-validate = "Direccion">
-                <input v-model="userForm.direccion" class="input100" type="text" placeholder="Direccion" required>
-                <span class="focus-input100" data-placeholder="&#xe82a;"></span>
-            </div>
             <div class="wrap-input100 validate-input" data-validate = "Telefono">
                 <input v-model="userForm.telefono" class="input100" type="number" placeholder="Telefono" required>
                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
@@ -28,6 +20,10 @@
             <div class="wrap-input100 validate-input" data-validate="Password">
                 <input v-model="userForm.password" class="input100" type="password" placeholder="Contraseña" required>
                 <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate = "Password">
+                <input v-model="userForm.confirmacion" class="input100" type="password" placeholder="Confirmar contraseña" required>
+                <span class="focus-input100" data-placeholder="&#xe82a;"></span>
             </div>
             <div class="container-login100-form-btn m-t-32">
                 <button class="login100-form-btn">
@@ -56,14 +52,20 @@ export default {
             direccion: '',
             telefono: '',
             email: '',
-            password: ''
+            password: '',
+            confirmacion: ''
         })
         return {
             userForm,
             onSubmit: async() => {
-                const {ok, message} = await crearUsuario(userForm.value);
-                if (!ok) Swal.fire('Error', message, 'error')
-                else router.push({name:'general'}) 
+                if(userForm.value.confirmacion == userForm.value.password){
+                    const {ok, message} = await crearUsuario(userForm.value);
+                    if (!ok) Swal.fire('Error', message, 'error')
+                    else router.push({name:'general'}) 
+                }else{
+                    Swal.fire('Error', 'Las contraseñas no coinciden', 'error')
+                }
+                
             }
 
         }

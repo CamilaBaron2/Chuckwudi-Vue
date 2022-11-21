@@ -1,16 +1,16 @@
 <template>
   <div class="card bg-light">
-    <div class="d-flex justify-content-around mb-2">
-        <div class="container-image">
+    <div class="row justify-content-around mb-2">
+        <div class="col-md-4 container-image">
           <img class="image" src="@/assets/images/headerimage.png" alt="delivery">
         </div>
-        <div class="d-flex align-items-center">
+        <div class="col-md-6 d-flex align-items-center">
           <div>
             <h2><b>$0 Delivery for 30 days!</b></h2>
             <p>$0 delivery free for orders over $10 for 30 days</p>
           </div>
         </div>
-        <div class="d-flex align-items-end">
+        <div class="col-md-2 d-flex align-items-end">
         <button class="btn btn-outline-primary">
           Learn more
           <i class="fa-solid fa-arrow-right"></i>

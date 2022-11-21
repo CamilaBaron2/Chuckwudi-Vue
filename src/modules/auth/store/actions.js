@@ -1,20 +1,20 @@
 import authApi from "@/api/authApi"
 
 export const crearUsuario = async ({commit}, usuario) => {
-    const { nombre, apellido, direccion, telefono, email, password} = usuario
+    const { nombre, telefono, email, password} = usuario
 
         try{ 
             const {data} = await authApi.post(':signUp', {email, password, returnSecureToken: true})
             const {idToken, refreshToken} =data
             
-            await authApi.post(':update', {displayName: nombre, apellido, direccion, telefono, idToken})
+            await authApi.post(':update', {displayName: nombre, telefono, idToken})
             
             delete usuario.password
             commit('loginUsuario', {usuario, idToken, refreshToken})
 
             return {ok: true}
         } catch(error) {
-            return {ok: false, message: error.response.data.error.mesagge}
+            return {ok: false, message: error.response.data.error.message}
         }
 }
 
@@ -23,6 +23,7 @@ export const ingresarUsuario = async ({commit}, usuario) => {
 
         try{ 
             const {data} = await authApi.post(':signInWithPassword', {email, password, returnSecureToken: true})
+            console.log(data)
             const {displayName, idToken, refreshToken} = data
             usuario.nombre = displayName
             commit('loginUsuario', {usuario, idToken, refreshToken})
@@ -46,6 +47,7 @@ export const checkAutenticacion = async ({commit}) => {
 
     try{
         const {data} = await authApi.post(':lookup', {idToken})
+        console.log(data)
         const { displayName, email} = data.users[0]
 
         const usuario = {

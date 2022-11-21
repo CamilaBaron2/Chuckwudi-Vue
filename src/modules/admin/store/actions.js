@@ -33,7 +33,6 @@ export const cargarCategorias = async ({commit}) => {
 }
 
 export const guardarProductos = async ({commit},producto) => {
-    console.log(producto)
     const { data } = await chukwudiApi.post('/productos.json', producto)
     const productoGuardado = {
         id: data.name,
@@ -54,4 +53,20 @@ export const eliminarProducto = async ({ commit }, id ) => {
     commit('eliminarProducto', id)
 
     return id
+}
+
+export const cargarOrdenes = async ({commit}) => {
+    const {data} = await chukwudiApi.get('/ordenes.json')
+    if ( !data ){
+        commit('setOrdenes', [] )
+        return
+    }
+    const ordenes = [];
+    for(let id of Object.keys(data)){
+        ordenes.push({
+            id: id,
+            ...data[id]
+        })
+    }
+    commit('setOrdenes', ordenes)
 }

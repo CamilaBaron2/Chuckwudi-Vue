@@ -24,7 +24,7 @@ import useAuth from '@/modules/auth/composables/useAuth';
 export default {
   setup(){
     const router = useRouter() 
-    const {logout} = useAuth()
+    const { logout } = useAuth()
 
     return{
       onLogout:() => {

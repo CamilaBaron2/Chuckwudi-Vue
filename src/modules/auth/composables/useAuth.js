@@ -11,7 +11,6 @@ const useAuth = () => {
 
     const ingresarUsuario = async (usuario) => {
         const resp = await store.dispatch('auth/ingresarUsuario', usuario)
-        console.log('action',resp)
         return resp
     }
 
@@ -30,7 +29,8 @@ const useAuth = () => {
         ingresarUsuario,
         logout,
 
-        autenStatus: computed(() => store.getters ['auth/currentState'])
+        autenStatus: computed(() => store.getters ['auth/currentState']),
+        username: computed(()=> store.getters['auth/username'])
     }
 }
 

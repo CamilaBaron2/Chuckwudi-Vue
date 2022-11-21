@@ -7,29 +7,40 @@
             <tr>
               <th>Referencia</th>
               <th>Nombre cliente</th>
+              <th>Dirección</th>
               <th>Cantidad de productos</th>
-              <th>Fecha creacion</th>
+              <th>Fecha creación</th>
               <th>Valor pagado</th>
+              <th>Estado</th>
             </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Edwin Holguin</td>
-            <td>3</td>
-            <td>12-sep-2022</td>
-            <td>12000</td>
+          <tr v-for="orden of ordenes" :key="orden.id">
+            <td>{{orden.id}}</td>
+            <td>{{orden.cliente}}</td>
+            <td>{{orden.direccion}}</td>
+            <td>{{orden.cantidadProductos}}</td>
+            <td>{{orden.fechaCreacion}}</td>
+            <td>{{orden.valorCompra}}</td>
+            <td><span class="badge bg-success">{{orden.estado}}</span></td>
           </tr>
         </tbody>
     </table>
   </div>
-  <Fab/>
-  <InfoProducto/>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
-
+  computed: {
+    ...mapGetters('admin', ['ordenes'])
+  },
+  methods: {
+    ...mapActions('admin', ['cargarOrdenes'])
+  },
+  created() {
+    this.cargarOrdenes()
+  }
 }
 </script>
 

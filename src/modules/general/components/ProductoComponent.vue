@@ -1,7 +1,7 @@
 <template>
  <div class="card">
     <img v-if="product.img" :src="product.img" class="image" alt="food">
-    <img v-else src="@/assets/images/productos/pexels-photo-376464.jpeg" class="image" alt="food">
+    <img v-else src="@/assets/images/notfound.jpg" class="image" alt="food">
     <div class="time bg-info">
         <h5>{{product.tiempo}}</h5>
     </div>
@@ -21,6 +21,7 @@
 
 <script>
 import {mapActions} from 'vuex';
+import Swal from 'sweetalert2'
 
 export default {
     props:{
@@ -40,6 +41,12 @@ export default {
         },
         addProductoCompra(){
             this.agregarProductosCarrito(this.product);
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto Agregado',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     }
 }

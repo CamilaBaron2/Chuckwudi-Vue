@@ -12,3 +12,7 @@ export const productoSeleccionado = (state) => {
 export const productos = (state) => {
     return [...state.productos]
 }
+
+export const ordenes = (state) => {
+    return [...state.ordenes]
+}

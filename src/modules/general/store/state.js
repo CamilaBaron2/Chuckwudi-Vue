@@ -4,5 +4,6 @@ export default () => ({
     categoriaSeleccionada: 'All',
     loadingProductos: true,
     productos: [],
-    productosCarrito: []
+    productosCarrito: [],
+    ordenActual : null
 })

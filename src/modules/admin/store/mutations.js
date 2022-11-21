@@ -18,10 +18,14 @@ export const addProducto = (state, producto ) => {
 export const updateProducto = (state, producto) => { 
 
     const idx = state.productos.map(e => e.id).indexOf( producto.id )
-    state.productos[idx] = producto   
+    state.productos[idx] = producto
 }
 
 export const eliminarProducto = ( state, id ) => {
     
     state.productos = state.productos.filter( producto => producto.id !== id )
+}
+
+export const setOrdenes = (state, ordenesNuevas) => {
+    state.ordenes = [...ordenesNuevas]
 }

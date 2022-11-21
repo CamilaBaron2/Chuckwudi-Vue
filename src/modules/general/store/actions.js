@@ -37,9 +37,32 @@ export const cargarProductos = async ({commit}) => {
     commit('setProductos', productos)
 }
 
-export const agregarProductosCarrito = ({commit}, productos) => {
-    const productoNuevo = {...productos, cantidad: 1}
+export const agregarProductosCarrito = ({commit}, producto) => {
+    const productoNuevo = {...producto, cantidad: 1}
     commit('agregarProductosCarrito',productoNuevo)
 }
 
+export const aumentar = ({commit}, id) => {
+    commit('sumarProducto', id)
+}
 
+export const decrementar = ({commit}, id) => {
+    commit('restarProducto', id)
+}
+
+export const eliminar = ({commit},id) => {
+    commit('eliminarProducto', id)
+}
+
+export const eliminarOrden = ({commit}) => {
+    commit('eliminarLaOrden')
+}
+
+export const nuevaCompra = async ({commit}, orden) => {
+    const { data } = await chukwudiApi.post('/ordenes.json', orden)
+    const ordenGuardada = {
+        id: data.name,
+        ...orden,
+    }
+    commit('guardarOrden',ordenGuardada);
+}

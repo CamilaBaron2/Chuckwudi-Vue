@@ -86,7 +86,7 @@ export default {
     methods:{
         ...mapActions('admin', ['cargarCategorias', 'guardarProductos', 'actualizarProductos']),
         async guardar() {
-            if (!this.file){
+            if (!this.file && !this.productoSeleccionado.img){
                 Swal.fire('Error', 'Imagen Requerida' , 'error')
                 return
             }
@@ -95,9 +95,10 @@ export default {
                 allowOutsideClick: false
             })
             Swal.showLoading()
-            const picture = await cargarImagen( this.file )
-            console.log(picture)
-            this.productoSeleccionado.img = picture
+            if(this.file){
+                const picture = await cargarImagen( this.file )
+                this.productoSeleccionado.img = picture
+            }
 
             if(!this.productoSeleccionado.id){
                 await this.guardarProductos(this.productoSeleccionado)

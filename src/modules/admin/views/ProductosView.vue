@@ -18,7 +18,7 @@
             <td>{{producto.nombre}}</td>
             <td>{{producto.precio}}</td>
             <td>{{producto.tiempo}}</td>
-            <td>5,0</td>
+            <td>4,5</td>
             <td>{{producto.categoria.nombre}}</td>
             <td>
               <button @click="filtrar(producto)" class="btn btn-success" data-bs-toggle="offcanvas" data-bs-target="#seccionProducto"><i class="fa fa-edit"></i></button>

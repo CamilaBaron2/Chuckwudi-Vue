@@ -1,5 +1,6 @@
 export default () => ({
     categorias: [],
     productos: [],
-    productoSeleccionado: {}
+    productoSeleccionado: {},
+    ordenes: []
 })

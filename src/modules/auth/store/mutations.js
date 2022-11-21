@@ -13,7 +13,6 @@ export const loginUsuario = ( state, { usuario, idToken, refreshToken}) => {
 }
 
 export const logout = (state) => {
-    console.log(state)
     state.usuario = null
     state.idToken = null
     state.refreshToken = null
