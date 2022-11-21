@@ -13,7 +13,7 @@ import {mapGetters} from 'vuex'
 
 export default {
     computed: {
-        ...mapGetters('general', ['getProductosFiltrados', 'loadingProductos'])
+        ...mapGetters('general', ['getProductosFiltrados', 'loadingProductos']),
     },
     components: {
         Producto: defineAsyncComponent (() => import('../components/ProductoComponent.vue')),

@@ -22,7 +22,7 @@ const routes = [
     ...Autenticacion
   },
   {
-    path: '/pagos',
+    path: '/pagos/:id',
     name: 'pagos',
     beforeEnter: [isAutenticacionGuard],
     component: () => import('@/modules/general/views/PagosView.vue')

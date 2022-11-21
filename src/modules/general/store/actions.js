@@ -65,4 +65,5 @@ export const nuevaCompra = async ({commit}, orden) => {
         ...orden,
     }
     commit('guardarOrden',ordenGuardada);
+    commit('eliminarLaOrden')
 }
